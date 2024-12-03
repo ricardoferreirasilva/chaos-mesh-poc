@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: hello-world
+  template:
+    metadata:
+      labels:
+        bb: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: nmatsui/hello-world-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+  namespace: staging
+spec:
+  type: NodePort
+  selector:
+    bb: hello-world
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001
