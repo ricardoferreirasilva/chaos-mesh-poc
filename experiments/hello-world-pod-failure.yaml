@@ -1,0 +1,12 @@
+kind: PodChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: staging
+  name: hello-world-pod-failure
+spec:
+  selector:
+    namespaces:
+      - staging
+  mode: all
+  action: pod-failure
+  duration: 2m

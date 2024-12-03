@@ -30,4 +30,6 @@ We will now deploy an hello-world app on the staging environment in order to run
 `kubectl apply -f ./hello-world`
 
 This app will be available on localhost:30001 due to the NodePort.
-We can now use the dashboard or manifest files to create experiments for it.
+We can now use the dashboard or manifest files to create experiments for it. For example:
+
+`kubectl apply -f ./experiments/hello-world-pod-failure.yaml` will simulate pod failures for all pods in the staging environment for the next 2 minutes.
